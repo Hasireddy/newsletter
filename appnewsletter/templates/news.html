@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="container-fluid mt-5">
+    {% if messages%}
+        <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{message}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{news_form}}
+        <button type="submit" name="subscribe">Subscribe</button>
+        <button type="submit" name="unsubscribe">Unsubscribe</button>
+    </form>
+</div>
+
+{% endblock %}
